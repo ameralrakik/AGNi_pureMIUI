@@ -2046,7 +2046,7 @@ static int mxt_set_power_cfg(struct mxt_data *data, u8 mode)
 		for (i = 0; i < cnt; i++) {
 			if (mxt_get_object(data, mxt_save[i].suspend_obj) == NULL)
 				continue;
-			if (mxt_save[i].suspend_flags == MXT_SUSPEND_DYNAMIC)
+			if (mxt_save[i].suspend_flags == MXT_SUSPEND_DYNAMIC) {
 				error |= mxt_read_object(data,
 					mxt_save[i].suspend_obj,
 					mxt_save[i].suspend_reg,
@@ -2055,12 +2055,14 @@ static int mxt_set_power_cfg(struct mxt_data *data, u8 mode)
 					mxt_save[i].suspend_obj,
 					mxt_save[i].suspend_reg,
 					mxt_save[i].suspend_val);
-			if (error) {
-				error = mxt_chip_reset(data);
-				if (error)
-					dev_err(dev, "Failed to do chip reset!\n");
-				break;
-			}
+				if (error) {
+			    	error = mxt_chip_reset(data);
+			    	if (error) {
+			    		dev_err(dev, "Failed to do chip reset!\n");
+			    	    break;
+			    	}
+			    }
+			 }
 		}
 		break;
 
@@ -4004,7 +4006,7 @@ static bool mxt_is_golden_ref_good(struct mxt_data *data, bool dualx_on)
 		if (mxt_monitor_delta_no_calib_risk(data, DELTA_TYPE_MULT) !=
 						MONITOR_NO_RISK)
 			return false;
-			msleep(1000);
+		msleep(1000);
 	}
 
 	return true;
@@ -4716,10 +4718,11 @@ static int __devinit mxt_probe(struct i2c_client *client,
 				__func__, pdata->power_gpio);
 			goto err_free_data;
 		}
-	} else
+	} else {
 		error = mxt_initialize_regulator(data, true);
 		if (error)
 			goto err_free_data;
+	}
 
 	if (gpio_is_valid(pdata->irq_gpio)) {
 		/* configure touchscreen irq gpio */

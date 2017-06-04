@@ -101,7 +101,7 @@ static long audio_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 			audio->enabled);
 		if (audio->stopped == 1)
 			audio->stopped = 0;
-			break;
+	break;
 		}
 	case AUDIO_GET_AMRWBPLUS_CONFIG_V2: {
 		if ((audio) && (arg) && (audio->codec_cfg)) {
@@ -116,7 +116,7 @@ static long audio_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 				rc = -EFAULT;
 				break;
 			}
-		break;
+	break;
 	}
 	case AUDIO_SET_AMRWBPLUS_CONFIG_V2: {
 		if ((audio) && (arg) && (audio->codec_cfg)) {
@@ -131,7 +131,7 @@ static long audio_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 				rc = -EFAULT;
 				break;
 			}
-		break;
+	break;
 	}
 	default:
 		pr_debug("%s[%p]: Calling utils ioctl\n", __func__, audio);

@@ -1,5 +1,5 @@
 /*
- * Trace files that want to automate creationg of all tracepoints defined
+ * Trace files that want to automate creation of all tracepoints defined
  * in their file should include this file. The following are macros that the
  * trace file may define:
  *
@@ -76,7 +76,7 @@
 /* Let the trace headers be reread */
 #define TRACE_HEADER_MULTI_READ
 
-#include TRACE_INCLUDE(TRACE_INCLUDE_FILE)
+//#include TRACE_INCLUDE(TRACE_INCLUDE_FILE)
 
 /* Make all open coded DECLARE_TRACE nops */
 #undef DECLARE_TRACE

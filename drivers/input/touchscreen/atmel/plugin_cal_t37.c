@@ -1153,16 +1153,17 @@ static int caculate_gradient(s16 *dst_buf,s16 *src_buf,const s16 *diff_buf,const
 			if (high_limit) {
 				result0 = result1 = 0;
 				if (invalid_count_array) {
-					if (j == area->y0)
+					if (j == area->y0) {
 						result0 = surface_check_and_fix_invalid_value(src_buf,area,surface,
 							i,j,low_limit,high_limit,invalid_count_array);
 						result1 = surface_check_and_fix_invalid_value(src_buf,area,surface,
 							i,j + 1,low_limit,high_limit,invalid_count_array);
-					#if (DBG_LEVEL > 1)
+					}
+#if (DBG_LEVEL > 1)
 					if (result0 || result1) {
 						printk(KERN_INFO "[mxt]pos(%d,%d) val %d %d, %d %d\n",i,j,src_buf[pos],src_buf[pos + 1],result0,result1);
 					}
-					#endif
+#endif
 				}
 			}
 			dst_buf[pos] = (src_buf[pos] - src_buf[pos + 1]);

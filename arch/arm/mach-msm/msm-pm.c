@@ -42,6 +42,8 @@
 #include "spm.h"
 #include "pm-boot.h"
 #include "clock.h"
+#include <asm/system_misc.h>
+#include <linux/sched.h>
 
 #define CREATE_TRACE_POINTS
 #include <mach/trace_msm_low_power.h>
@@ -991,7 +993,7 @@ static int msm_cpu_status_probe(struct platform_device *pdev)
 	return 0;
 };
 
-static struct of_device_id msm_slp_sts_match_tbl[] __initdata= {
+static struct of_device_id msm_slp_sts_match_tbl[] = {
 	{.compatible = "qcom,cpu-sleep-status"},
 	{},
 };
@@ -1005,7 +1007,7 @@ static struct platform_driver msm_cpu_status_driver = {
 	},
 };
 
-static struct of_device_id msm_snoc_clnt_match_tbl[] __initdata = {
+static struct of_device_id msm_snoc_clnt_match_tbl[] = {
 	{.compatible = "qcom,pm-snoc-client"},
 	{},
 };
@@ -1272,7 +1274,7 @@ static int msm_cpu_pm_probe(struct platform_device *pdev)
 	return ret;
 }
 
-static struct of_device_id msm_cpu_pm_table[] __initdata = {
+static struct of_device_id msm_cpu_pm_table[] = {
 	{.compatible = "qcom,pm-8x60"},
 	{},
 };

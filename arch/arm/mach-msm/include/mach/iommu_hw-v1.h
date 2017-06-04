@@ -57,7 +57,7 @@
 
 #define SET_FIELD(addr, mask, shift, v) \
 do { \
-	int t = readl_relaxed(addr); \
+	phys_addr_t t = readl_relaxed(addr); \
 	writel_relaxed((t & ~((mask) << (shift))) + (((v) & \
 			(mask)) << (shift)), addr); \
 } while (0)

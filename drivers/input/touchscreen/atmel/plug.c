@@ -470,7 +470,7 @@ int mxt_get_current_page_info(void * dev_id, s8 command_register[2])
 	int ret;
 
 	reg = data->T37_address;
-	ret = __mxt_read_reg(data->client, reg, sizeof(command_register), &command_register[0]);
+	ret = __mxt_read_reg(data->client, reg, strlen(command_register), &command_register[0]);
 	if (ret) {
 		dev_err(&data->client->dev, "T37 read offset 0 failed!\n");
 		return ret;

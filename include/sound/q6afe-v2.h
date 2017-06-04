@@ -150,9 +150,9 @@ int afe_start_pseudo_port(u16 port_id);
 int afe_stop_pseudo_port(u16 port_id);
 uint32_t afe_req_mmap_handle(struct afe_audio_client *ac);
 int afe_unmap_cal_blocks(void);
-int afe_memory_map(u32 dma_addr_p, u32 dma_buf_sz, struct afe_audio_client *ac);
-int afe_cmd_memory_map(u32 dma_addr_p, u32 dma_buf_sz);
-int afe_cmd_memory_map_nowait(int port_id, u32 dma_addr_p, u32 dma_buf_sz);
+int afe_memory_map(phys_addr_t dma_addr_p, u32 dma_buf_sz, struct afe_audio_client *ac);
+int afe_cmd_memory_map(phys_addr_t dma_addr_p, u32 dma_buf_sz);
+int afe_cmd_memory_map_nowait(int port_id, phys_addr_t dma_addr_p, u32 dma_buf_sz);
 int afe_cmd_memory_unmap(u32 dma_addr_p);
 int afe_cmd_memory_unmap_nowait(u32 dma_addr_p);
 void afe_set_dtmf_gen_rx_portid(u16 rx_port_id, int set);
@@ -164,8 +164,8 @@ int afe_register_get_events(u16 port_id,
 		uint32_t token, uint32_t *payload, void *priv),
 		void *private_data);
 int afe_unregister_get_events(u16 port_id);
-int afe_rt_proxy_port_write(u32 buf_addr_p, u32 mem_map_handle, int bytes);
-int afe_rt_proxy_port_read(u32 buf_addr_p, u32 mem_map_handle, int bytes);
+int afe_rt_proxy_port_write(phys_addr_t buf_addr_p, u32 mem_map_handle, int bytes);
+int afe_rt_proxy_port_read(phys_addr_t buf_addr_p, u32 mem_map_handle, int bytes);
 int afe_port_start(u16 port_id, union afe_port_config *afe_config,
 	u32 rate);
 int afe_spk_prot_feed_back_cfg(int src_port, int dst_port,

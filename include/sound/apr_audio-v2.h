@@ -2179,10 +2179,10 @@ u32                  mem_map_handle;
 struct afe_port_cmd_get_param_v2 {
 
 	struct apr_hdr hdr;
-u16                  port_id;
+	u16 port_id;
 /* Port interface and direction (Rx or Tx) to start. */
 
-	u16                  payload_size;
+	u16 payload_size;
 /* Maximum data size of the parameter ID/module ID combination.
  * This is a multiple of four bytes
  * Supported values: > 0
@@ -2213,12 +2213,12 @@ u16                  port_id;
  */
 
 
-	u32                  module_id;
+	u32 module_id;
 /* ID of the module to be queried.
  * Supported values: Valid module ID
  */
 
-	u32                  param_id;
+	u32 param_id;
 /* ID of the parameter to be queried.
  * Supported values: Valid parameter ID
  */
@@ -2258,9 +2258,9 @@ struct afe_port_cmdrsp_get_param_v2 {
 */
 #define ADSP_MEMORY_MAP_PHYSICAL_MEMORY 0
 
-#define NULL_COPP_TOPOLOGY				0x00010312
-#define DEFAULT_COPP_TOPOLOGY				0x00010be3
-#define DEFAULT_POPP_TOPOLOGY				0x00010be4
+#define NULL_COPP_TOPOLOGY						0x00010312
+#define DEFAULT_COPP_TOPOLOGY					0x00010BE3
+#define DEFAULT_POPP_TOPOLOGY					0x00010BE4
 #define VPM_TX_SM_ECNS_COPP_TOPOLOGY			0x00010F71
 #define VPM_TX_DM_FLUENCE_COPP_TOPOLOGY			0x00010F72
 #define VPM_TX_QMIC_FLUENCE_COPP_TOPOLOGY		0x00010F75
@@ -3176,8 +3176,8 @@ struct asm_amrwbplus_fmt_blk_v2 {
 
 } __packed;
 
-#define ASM_MEDIA_FMT_AC3_DEC                   0x00010BF6
-#define ASM_MEDIA_FMT_EAC3_DEC                   0x00010C3C
+#define ASM_MEDIA_FMT_AC3_DEC                0x00010BF6
+#define ASM_MEDIA_FMT_EAC3_DEC               0x00010C3C
 #define ASM_MEDIA_FMT_DTS                    0x00010D88
 
 /* Media format ID for adaptive transform acoustic coding. This
@@ -3848,7 +3848,7 @@ struct asm_session_cmdrsp_get_path_delay_v2 {
 
 struct asm_stream_cmd_open_write_v3 {
 	struct apr_hdr			hdr;
-	uint32_t                    mode_flags;
+	phys_addr_t                  mode_flags;
 /* Mode flags that configure the stream to notify the client
  * whenever it detects an SR/CM change at the input to its POPP.
  * Supported values for bits 0 to 1:
@@ -6539,7 +6539,7 @@ struct asm_spkr_calib_vi_proc_cfg {
 	uint32_t minor_version;
 	int32_t	r0_cali_q24;
 	int16_t	t0_cali_q6;
-	int16_t	reserved;
+	uint32_t reserved;
 } __packed;
 
 #define AFE_PARAM_ID_CALIB_RES_CFG 0x0001022B
@@ -6851,9 +6851,9 @@ struct afe_param_id_clip_bank_sel {
 /* Operation needs more data or resources. */
 #define ADSP_ENEEDMORE    0x00000012
 /* Operation does not have memory. */
-#define ADSP_ENOMEMORY     0x00000014
+#define ADSP_ENOMEMORY    0x00000014
 /* Item does not exist. */
-#define ADSP_ENOTEXIST      0x00000015
+#define ADSP_ENOTEXIST    0x00000015
 /* Operation is finished. */
 #define ADSP_ETERMINATED    0x00011174
 

@@ -25,7 +25,7 @@ typedef void (*lsm_app_cb)(uint32_t opcode, uint32_t token,
 struct lsm_sound_model {
 	dma_addr_t      phys;
 	void		*data;
-	uint32_t	size; /* size of buffer */
+	size_t		size; /* size of buffer */
 	uint32_t	actual_size; /* actual number of bytes read by DSP */
 	struct ion_handle *handle;
 	struct ion_client *client;
